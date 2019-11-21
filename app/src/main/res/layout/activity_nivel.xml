@@ -6,26 +6,25 @@
     android:layout_height="match_parent"
     android:background="#5a92db"
     android:orientation="vertical"
-    tools:context=".MenuActivity">
+    tools:context=".NivelActivity">
 
     <TextView
-        android:id="@+id/textoCategoria"
-        android:layout_width="wrap_content"
+        android:id="@+id/selecioneNivel"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:layout_marginTop="100dp"
-        android:gravity="center|center_horizontal"
-        android:text="Selecione uma categoria"
+        android:text="Selecione o nível"
+        android:textAlignment="center"
         android:textColor="@android:color/white"
         android:textSize="24sp"
         android:textStyle="bold" />
 
     <Button
-        android:id="@+id/botaoCategoria1"
+        android:id="@+id/botaoNivel1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="50dp"
-        android:onClick="selecionaCategoria"
-        android:text="Categoria 1" />
+        android:onClick="iniciaQuiz"
+        android:text="Nivel 1" />
 </LinearLayout>

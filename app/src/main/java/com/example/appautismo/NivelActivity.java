@@ -6,17 +6,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class MenuActivity extends AppCompatActivity {
+public class NivelActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu);
+        setContentView(R.layout.activity_nivel);
     }
 
-    public void selecionaCategoria(View view) {
+    public void iniciaQuiz(View view) {
 
-        Intent intent = new Intent(this, NivelActivity.class);
+        Intent intent = new Intent(this, StartinScreenActivity.class);
         startActivity(intent);
     }
+
 }

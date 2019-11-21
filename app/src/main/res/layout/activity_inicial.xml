@@ -16,7 +16,8 @@
         android:text="@string/digiteSeuNome"
         android:textAlignment="center"
         android:textColor="@android:color/white"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="395dp"
