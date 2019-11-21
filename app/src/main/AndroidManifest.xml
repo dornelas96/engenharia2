@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.appautismo">
+    package="com.example.lookatme">
 
     <application
         android:allowBackup="true"
@@ -8,18 +8,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".NivelActivity"></activity>
-        <activity android:name=".MenuActivity" />
-        <activity android:name=".SplashScreen">
+        <activity android:name="com.example.lookatme.view.NivelActivity"></activity>
+        <activity android:name="com.example.lookatme.view.CategoriaActivity" />
+        <activity android:name="com.example.lookatme.view.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ActivityInicial" />
-        <activity android:name=".QuizActivity" />
-        <activity android:name=".StartinScreenActivity" />
+        <activity android:name="com.example.lookatme.view.ActivityInicial" />
+        <activity android:name="com.example.lookatme.view.QuizActivity" />
+        <activity android:name="com.example.lookatme.view.StartinScreenActivity" />
     </application>
 
 </manifest>

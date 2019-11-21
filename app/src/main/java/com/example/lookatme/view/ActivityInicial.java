@@ -1,15 +1,14 @@
-package com.example.appautismo;
+package com.example.lookatme.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.EditText;
+
+import com.example.lookatme.R;
 
 public class ActivityInicial extends AppCompatActivity {
 
@@ -32,7 +31,7 @@ public class ActivityInicial extends AppCompatActivity {
         editor.putString("nomeUsuario", nomeUsuario);
         editor.apply();
 
-        Intent intent = new Intent(this, MenuActivity.class);
+        Intent intent = new Intent(this, CategoriaActivity.class);
         startActivity(intent);
     }
 }

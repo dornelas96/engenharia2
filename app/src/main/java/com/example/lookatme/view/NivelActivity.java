@@ -1,10 +1,12 @@
-package com.example.appautismo;
+package com.example.lookatme.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.lookatme.R;
 
 public class NivelActivity extends AppCompatActivity {
 

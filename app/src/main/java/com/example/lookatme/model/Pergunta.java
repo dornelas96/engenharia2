@@ -1,10 +1,10 @@
-package com.example.appautismo;
+package com.example.lookatme.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Pergunta implements Parcelable {
-    private String pergunta;
+    private String textoPergunta;
     private String opcao1;
     private String opcao2;
     private String opcao3;
@@ -14,7 +14,7 @@ public class Pergunta implements Parcelable {
     }
 
     public Pergunta(String pergunta, String opcao1, String opcao2, String opcao3, int respNum) {
-        this.pergunta = pergunta;
+        this.textoPergunta = pergunta;
         this.opcao1 = opcao1;
         this.opcao2 = opcao2;
         this.opcao3 = opcao3;
@@ -22,7 +22,7 @@ public class Pergunta implements Parcelable {
     }
 
     protected Pergunta(Parcel in) {
-        pergunta = in.readString();
+        textoPergunta = in.readString();
         opcao1 = in.readString();
         opcao2 = in.readString();
         opcao3 = in.readString();
@@ -31,7 +31,7 @@ public class Pergunta implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(pergunta);
+        dest.writeString(textoPergunta);
         dest.writeString(opcao1);
         dest.writeString(opcao2);
         dest.writeString(opcao3);
@@ -55,12 +55,12 @@ public class Pergunta implements Parcelable {
         }
     };
 
-    public String getPergunta() {
-        return pergunta;
+    public String getTextoPergunta() {
+        return textoPergunta;
     }
 
-    public void setPergunta(String pergunta) {
-        this.pergunta = pergunta;
+    public void setTextoPergunta(String textoPergunta) {
+        this.textoPergunta = textoPergunta;
     }
 
     public String getOpcao1() {

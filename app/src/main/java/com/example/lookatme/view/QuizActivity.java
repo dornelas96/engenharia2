@@ -1,4 +1,4 @@
-package com.example.appautismo;
+package com.example.lookatme.view;
 
 import android.content.Intent;
 import android.content.res.ColorStateList;
@@ -13,8 +13,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.lookatme.R;
+import com.example.lookatme.controller.QuizController;
+import com.example.lookatme.model.Pergunta;
+
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class QuizActivity extends AppCompatActivity {
     public static final String EXTRA_PONTUACAO = "extraPontuacao";
@@ -23,8 +26,6 @@ public class QuizActivity extends AppCompatActivity {
     public static final String KEY_RESPONDIDO = "keyRespondido";
     public static final String KEY_PERGUNTAS_COUNT = "keyPerguntasCount";
     public static final String KEY_PERGUNTAS_LISTA = "keyPerguntasLista";
-
-
 
     private TextView textViewPergunta;
     private TextView textViewPontuacao;
@@ -47,6 +48,7 @@ public class QuizActivity extends AppCompatActivity {
 
     private long backPressedTime;
 
+    private QuizController quizController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,13 +66,14 @@ public class QuizActivity extends AppCompatActivity {
 
         textColorDefaultRb = rb1.getTextColors();
 
-        if(savedInstanceState == null) {
-            QuizDbHelper dbHelper = new QuizDbHelper(this);
-            perguntaList = dbHelper.getAllPerguntas();
-            perguntasTotal = perguntaList.size();
-            Collections.shuffle(perguntaList);
+        quizController = new QuizController(this);
 
-            showProxPergunta();
+        if(savedInstanceState == null) {
+
+            perguntaList = quizController.listaTodasPerguntasEmbaralhadas();
+            perguntasTotal = perguntaList.size();
+
+            mostraProximaPergunta();
         } else{
             perguntaList = savedInstanceState.getParcelableArrayList(KEY_PERGUNTAS_LISTA);
             perguntasTotal = perguntaList.size();
@@ -86,12 +89,12 @@ public class QuizActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(!respondida){
                     if(rb1.isChecked() || rb2.isChecked() || rb3.isChecked()){
-                        checkResposta();
+                        verificaResposta();
                     }else{
                         Toast.makeText(QuizActivity.this, "Selecione uma resposta!", Toast.LENGTH_SHORT).show();
                     }
                 } else{
-                    showProxPergunta();
+                    mostraProximaPergunta();
                 }
             }
         });
@@ -99,7 +102,7 @@ public class QuizActivity extends AppCompatActivity {
 
     }
 
-    private void showProxPergunta(){
+    private void mostraProximaPergunta(){
         rb1.setTextColor(textColorDefaultRb);
         rb2.setTextColor(textColorDefaultRb);
         rb3.setTextColor(textColorDefaultRb);
@@ -108,7 +111,7 @@ public class QuizActivity extends AppCompatActivity {
         if(perguntasContador < perguntasTotal){
             atualPergunta = perguntaList.get(perguntasContador);
 
-            textViewPergunta.setText(atualPergunta.getPergunta());
+            textViewPergunta.setText(atualPergunta.getTextoPergunta());
             rb1.setText(atualPergunta.getOpcao1());
             rb2.setText(atualPergunta.getOpcao2());
             rb3.setText(atualPergunta.getOpcao3());
@@ -118,11 +121,11 @@ public class QuizActivity extends AppCompatActivity {
             respondida = false;
             buttonConfirmarProx.setText("Confirmar");
         }else{
-            finishQuiz();
+            terminaQuiz();
         }
     }
 
-    private void checkResposta(){
+    private void verificaResposta(){
         respondida = true;
         RadioButton rbSelecionado = findViewById(rbGroup.getCheckedRadioButtonId());
         int respNum = rbGroup.indexOfChild(rbSelecionado) + 1;
@@ -132,11 +135,11 @@ public class QuizActivity extends AppCompatActivity {
             textViewPontuacao.setText("Pontuação: "+pontuacao);
         }
 
-        showSolucao();
+        mostraSolucao();
     }
 
-    private void showSolucao(){
-        rb1.setTextColor(Color.RED);
+    private void mostraSolucao(){
+
         rb2.setTextColor(Color.RED);
         rb3.setTextColor(Color.RED);
 
@@ -162,7 +165,7 @@ public class QuizActivity extends AppCompatActivity {
         }
     }
 
-    private void finishQuiz() {
+    private void terminaQuiz() {
         Intent resultIntent = new Intent();
         resultIntent.putExtra(EXTRA_PONTUACAO,pontuacao);
         setResult(RESULT_OK,resultIntent);
@@ -172,7 +175,7 @@ public class QuizActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         if(backPressedTime + 2000 > System.currentTimeMillis()){
-            finishQuiz();
+            terminaQuiz();
         }else{
             Toast.makeText(this, "Pressione mais uma vez para sair!", Toast.LENGTH_SHORT).show();
         }

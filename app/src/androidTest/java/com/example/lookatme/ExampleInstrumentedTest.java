@@ -1,4 +1,4 @@
-package com.example.appautismo;
+package com.example.lookatme;
 
 import android.content.Context;
 

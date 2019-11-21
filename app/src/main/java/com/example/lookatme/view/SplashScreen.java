@@ -1,14 +1,13 @@
-package com.example.appautismo;
+package com.example.lookatme.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.Window;
-import android.view.WindowManager;
+
+import com.example.lookatme.R;
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -25,7 +24,7 @@ public class SplashScreen extends AppCompatActivity {
                 Intent intent;
 
                 if (preferences.contains("nomeUsuario")){
-                    intent = new Intent(SplashScreen.this, MenuActivity.class);
+                    intent = new Intent(SplashScreen.this, CategoriaActivity.class);
                 } else {
                     intent = new Intent(SplashScreen.this, ActivityInicial.class);
                 }

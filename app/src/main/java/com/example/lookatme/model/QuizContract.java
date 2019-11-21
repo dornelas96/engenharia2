@@ -1,4 +1,4 @@
-package com.example.appautismo;
+package com.example.lookatme.model;
 
 import android.provider.BaseColumns;
 

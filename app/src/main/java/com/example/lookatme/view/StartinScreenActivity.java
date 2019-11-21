@@ -1,4 +1,4 @@
-package com.example.appautismo;
+package com.example.lookatme.view;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.lookatme.R;
 
 public class StartinScreenActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_QUIZ = 1;
