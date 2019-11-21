@@ -53,11 +53,6 @@ public class QuizDbHelper extends SQLiteOpenHelper {
         adicionaPergunta(p2);
         Pergunta p3 = new Pergunta("Qual a figura nos olhos?","Circulo","Retângulo","Triângulo",3 );
         adicionaPergunta(p3);
-        Pergunta p4 = new Pergunta("Qual a figura nos olhos?","Triângulo","Hexágono","Retângulo",1 );
-        adicionaPergunta(p4);
-        Pergunta p5 = new Pergunta("Qual a figura nos olhos?","Hexágono","Circulo","Triângulo",1 );
-        adicionaPergunta(p5);
-
     }
 
     public void adicionaPergunta(Pergunta pergunta){

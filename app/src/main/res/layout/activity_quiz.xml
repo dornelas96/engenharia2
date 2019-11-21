@@ -25,10 +25,6 @@
         android:text="Pergunta: 1/x"
         android:textColor="@android:color/white" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
     <TextView
         android:id="@+id/text_view_pergunta"
         android:layout_width="match_parent"
@@ -84,5 +80,11 @@
         android:layout_marginBottom="47dp"
         android:freezesText="true"
         android:text="Confirmar" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/bebe" />
 
 </RelativeLayout>

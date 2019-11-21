@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -48,13 +49,22 @@ public class QuizActivity extends AppCompatActivity {
 
     private long backPressedTime;
 
+    private ImageView imageView;
+
     private QuizController quizController;
+
+    int[] imagensIds = {
+            R.drawable.bebe_circulo,
+            R.drawable.bebe_triangulo,
+            R.drawable.bebe_retangulo
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
+        imageView = findViewById(R.id.imageView);
         textViewPergunta = findViewById(R.id.text_view_pergunta);
         textViewPontuacao = findViewById(R.id.text_view_pontuacao);
         textViewPerguntaCont = findViewById(R.id.text_view_pergunta_count);
@@ -115,6 +125,7 @@ public class QuizActivity extends AppCompatActivity {
             rb1.setText(atualPergunta.getOpcao1());
             rb2.setText(atualPergunta.getOpcao2());
             rb3.setText(atualPergunta.getOpcao3());
+            imageView.setImageResource(imagensIds[atualPergunta.getRespNum()]);
 
             perguntasContador++;
             textViewPerguntaCont.setText("Pergunta: "+perguntasContador + "/"+ perguntasTotal);
